@@ -50,7 +50,7 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
         if (currentNode === null) {
             return null;
         } else if (data < currentNode.value) {
-            currentNode.left = this.delete(currentNode.leftNode, data);
+            currentNode.leftNode = this.delete(currentNode.leftNode, data);
             return currentNode;
         } else if (data > currentNode.value) {
             currentNode.rightNode = this.delete(currentNode.rightNode, data);
@@ -125,6 +125,6 @@ treeHead.leftNode.rightNode.displayValue();
 
 treeHead.leftNode.leftNode.displayValue();
 
-treeHead.delete(treeHead, 9);
+treeHead.delete(treeHead, 5);
 
 console.log(treeHead);
