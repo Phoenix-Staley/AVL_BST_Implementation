@@ -28,19 +28,19 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
     }
 
     // Inserts an already existing node, instead of creating a new node
-    this.insertNode = (prevNode, newNode) => {
+    this.insertNode = (currentNode, newNode) => {
         // If newNode's value is less, insert it left, else insert it right
-        if (newNode.value < prevNode.value) {
-            if (prevNode.leftNode === null) {
-                prevNode.leftNode = newNode;
+        if (newNode.value < currentNode.value) {
+            if (currentNode.leftNode === null) {
+                currentNode.leftNode = newNode;
             } else {
-                this.insertNode(prevNode.leftNode, newNode);
+                this.insertNode(currentNode.leftNode, newNode);
             }
         } else {
-            if (prevNode.rightNode === null) {
-                prevNode.rightNode = newNode;
+            if (currentNode.rightNode === null) {
+                currentNode.rightNode = newNode;
             } else {
-                this.insertNode(prevNode.rightNode, newNode);
+                this.insertNode(currentNode.rightNode, newNode);
             }
         }
     }
