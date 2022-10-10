@@ -59,7 +59,7 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
             // If currentNode's value is equal to data
             
             // If this node has no children, delete it
-            if (currentNode.leftNode === null && this.rightNode === null) {
+            if (currentNode.leftNode === null && currentNode.rightNode === null) {
                 currentNode = null;
                 return currentNode;
             }
@@ -107,8 +107,6 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
 
 let treeHead = new AVLNode(6, null, null, null);
 
-treeHead.displayValue();
-
 treeHead.insert(4);
 
 treeHead.insert(5);
@@ -121,10 +119,6 @@ treeHead.insert(7);
 
 treeHead.insert(9);
 
-treeHead.leftNode.rightNode.displayValue();
-
-treeHead.leftNode.leftNode.displayValue();
-
-treeHead.delete(treeHead, 5);
+treeHead.delete(treeHead, 3);
 
 console.log(treeHead);
