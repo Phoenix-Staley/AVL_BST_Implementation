@@ -103,6 +103,14 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
             return currentNode.findMinNode(currentNode.leftNode);
         }
     }
+
+    this.inorder = (node) => {
+        if (node !== null) {
+            this.inorder(node.leftNode);
+            console.log(node.value);
+            this.inorder(node.rightNode);
+        }
+    }
 }
 
 let treeHead = new AVLNode(6, null, null, null);
@@ -121,4 +129,4 @@ treeHead.insert(9);
 
 treeHead.delete(treeHead, 3);
 
-console.log(treeHead);
+treeHead.inorder(treeHead);
