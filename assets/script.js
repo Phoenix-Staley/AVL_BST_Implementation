@@ -45,8 +45,46 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
         }
     }
 
+    this.delete = (currentNode, data) => {
+        // Return null if the tree is empty
+        if (currentNode === null) {
+            return null;
+        } else if (data < currentNode.value) {
+            currentNode.left = this.delete(currentNode.leftNode, data);
+            return currentNode;
+        } else if (data > currentNode.value) {
+            currentNode.rightNode = this.delete(currentNode.rightNode, data);
+            return currentNode;
+        } else {
+            // If currentNode's value is equal to data
+            
+            // If this node has no children, delete it
+            if (currentNode.leftNode === null && this.rightNode === null) {
+                currentNode = null;
+                return currentNode;
+            }
+
+            if (currentNode.leftNode === null) {
+                // If this only has a right node
+                currentNode = currentNode.rightNode;
+                return currentNode;
+            } else if (currentNode.rightNode === null) {
+                // If this only has a left node
+                currentNode = currentNode.leftNode;
+                return currentNode;
+            } else {
+                // If this has 2 children, set this value to the lowest-value node in the right sub-tree
+                let minNode = currentNode.findMinNode(currentNode.rightNode);
+                currentNode.value = minNode.value;
+
+                // Removes the smallest node in the right sub-tree
+                let newRightNode = this.delete(currentNode.rightNode, minNode.value);
+                currentNode.rightNode = newRightNode;
+            }
+        }
+    }
+
     // Functions to be implemented
-    // delete(value)
 
     // Helper functions
     // getRootNode()
@@ -87,6 +125,6 @@ treeHead.leftNode.rightNode.displayValue();
 
 treeHead.leftNode.leftNode.displayValue();
 
-// treeHead.delete(8);
+treeHead.delete(treeHead, 9);
 
-console.log(treeHead.rightNode);
+console.log(treeHead);
