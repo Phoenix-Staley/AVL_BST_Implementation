@@ -49,12 +49,22 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
     // delete(value)
 
     // Helper functions
-    // findMinNode()
     // getRootNode()
     // inorder(node)
     // preorder(node)
     // postorder(node)
     // search(node, data)
+
+    // Search for the left-most node of the starter node's subtree
+    this.findMinNode = () => {
+        // If this is the left-most node, return this node
+        if (this.leftNode === null) {
+            return this;
+        } else {
+            // If this is not the left-mode node, search the left sub-tree
+            return this.findMinNode(this.leftNode);
+        }
+    }
 }
 
 let treeHead = new AVLNode(6, null, null, null);
