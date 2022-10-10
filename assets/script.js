@@ -56,13 +56,13 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
     // search(node, data)
 
     // Search for the left-most node of the starter node's subtree
-    this.findMinNode = () => {
+    this.findMinNode = (currentNode) => {
         // If this is the left-most node, return this node
-        if (this.leftNode === null) {
-            return this;
+        if (currentNode.leftNode === null) {
+            return currentNode;
         } else {
             // If this is not the left-mode node, search the left sub-tree
-            return this.findMinNode(this.leftNode);
+            return currentNode.findMinNode(currentNode.leftNode);
         }
     }
 }
