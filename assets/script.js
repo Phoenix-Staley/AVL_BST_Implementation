@@ -111,6 +111,14 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
             this.inorder(node.rightNode);
         }
     }
+
+    this.preorder = (node) => {
+        if (node !== null) {
+            console.log(node.value);
+            this.inorder(node.leftNode);
+            this.inorder(node.rightNode);
+        }
+    }
 }
 
 let treeHead = new AVLNode(6, null, null, null);
@@ -127,6 +135,6 @@ treeHead.insert(7);
 
 treeHead.insert(9);
 
-treeHead.delete(treeHead, 3);
-
-treeHead.inorder(treeHead);
+treeHead.insert(0);
+treeHead.insert(2);
+treeHead.insert(1);
