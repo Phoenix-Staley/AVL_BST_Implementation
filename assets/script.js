@@ -115,8 +115,17 @@ function AVLNode(value, leftNode, rightNode, parentNode) {
     this.preorder = (node) => {
         if (node !== null) {
             console.log(node.value);
-            this.inorder(node.leftNode);
-            this.inorder(node.rightNode);
+            this.preorder(node.leftNode);
+            this.preorder(node.rightNode);
+        }
+    }
+
+    this.postorder = (node) => {
+        if (node !== null) {
+            this.postorder(node.leftNode);
+            this.postorder(node.rightNode);
+            console.log(node.value);
+
         }
     }
 }
